@@ -1,0 +1,10 @@
+{% extends 'inscription.html.twig' %}
+
+{% block body %}
+
+    <div class="form-group">
+        {{ form_label(form.nom, "Nom Entreprise") }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+{% endblock %}

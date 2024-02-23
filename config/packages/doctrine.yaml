@@ -9,19 +9,26 @@ doctrine:
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
     orm:
-        auto_generate_proxy_classes: true
-        enable_lazy_ghost_objects: true
-        report_fields_where_declared: true
-        validate_xml_mapping: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        auto_mapping: true
+        # ...
+        query_cache_driver:
+            # ...
+        metadata_cache_driver:
+            # ...
+        result_cache_driver:
+            # ...
+        connection: ~
+        class_metadata_factory_name:  Doctrine\ORM\Mapping\ClassMetadataFactory
+        default_repository_class:  Doctrine\ORM\EntityRepository
+        auto_mapping: false
+        naming_strategy: doctrine.orm.naming_strategy.default
+        hydrators:
+            # ...
         mappings:
-            App:
-                type: attribute
-                is_bundle: false
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+            # ...
+        dql:
+            # ...
+        filters:
+            # ...
 
 when@test:
     doctrine:

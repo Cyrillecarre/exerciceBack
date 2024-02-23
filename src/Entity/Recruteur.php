@@ -2,18 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\ConsultantRepository;
+use App\Repository\RecruteurRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: ConsultantRepository::class)]
-class Consultant implements PasswordAuthenticatedUserInterface, UserInterface
+#[ORM\Entity(repositoryClass: RecruteurRepository::class)]
+class Recruteur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -24,6 +27,18 @@ class Consultant implements PasswordAuthenticatedUserInterface, UserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -62,9 +77,6 @@ class Consultant implements PasswordAuthenticatedUserInterface, UserInterface
     public function getRoles(): array
     {
         // Retourne les rôles de l'utilisateur (sous forme de tableau)
-        return ['ROLE_CONSULTANT'];
+        return ['ROLE_RECRUTEUR'];
     }
-
-
-    
 }

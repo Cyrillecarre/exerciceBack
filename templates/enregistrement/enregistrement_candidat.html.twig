@@ -1,0 +1,10 @@
+{% extends 'inscription.html.twig' %}
+
+{% block body %}
+
+    <div class="form-group">
+        {{ form_label(form.cv, "CV (PDF)") }}
+        {{ form_widget(form.cv, {'attr': {'class': 'form-control-file'}}) }}
+    </div>
+
+{% endblock %}
